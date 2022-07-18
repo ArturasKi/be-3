@@ -3,12 +3,13 @@ import axios from "axios";
 // import CatsCrud from "./Cats/Crud";
 // import ProductsCrud from "./Products/Crud";
 // import ComCrud from "./Com/Crud";
+import Nav from './Nav';
 import List from "./Rubas/List";
 import BackContext from "./BackContext";
 import Create from "./Rubas/Create";
 import Edit from "./Rubas/Edit";
 // import { v4 as uuidv4 } from "uuid";
-// import { authConfig } from '../../Functions/auth';
+import { authConfig } from '../../Functions/auth.js';
 
 function Back() {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
@@ -23,7 +24,7 @@ function Back() {
 // READ CLOTHING
   useEffect(() => {
     axios
-      .get("http://localhost:3003/admin/clothes")
+      .get("http://localhost:3003/admin/clothes", authConfig())
       .then((res) => setClothes(res.data));
   }, [lastUpdate]);
     
@@ -31,7 +32,7 @@ function Back() {
   useEffect(() => {
     if (null === createClothes) return;
     axios
-      .post("http://localhost:3003/admin/clothes", createClothes)
+      .post("http://localhost:3003/admin/clothes", createClothes, authConfig())
       .then((res) => {
         // showMessage(res.data.msg);
         setLastUpdate(Date.now()); // irasymas, update;
@@ -45,7 +46,7 @@ function Back() {
   useEffect(() => {
     if (null === deleteClothes) return;
     axios
-      .delete("http://localhost:3003/admin/clothes/" + deleteClothes.id)
+      .delete("http://localhost:3003/admin/clothes/" + deleteClothes.id, authConfig())
       .then((res) => {
         // showMessage(res.data.msg);
         setLastUpdate(Date.now()); // irasymas, update;
@@ -59,7 +60,7 @@ function Back() {
   useEffect(() => {
     if (null === deletePhoto) return;
     axios
-      .delete("http://localhost:3003/admin/photos/" + deletePhoto.id)
+      .delete("http://localhost:3003/admin/photos/" + deletePhoto.id, authConfig())
       .then((res) => {
         // showMessage(res.data.msg);
         setLastUpdate(Date.now()); // irasymas, update;
@@ -73,7 +74,7 @@ function Back() {
   useEffect(() => {
     if (null === editClothes) return;
     axios
-      .put("http://localhost:3003/admin/clothes/" + editClothes.id, editClothes)
+      .put("http://localhost:3003/admin/clothes/" + editClothes.id, editClothes, authConfig())
       .then((res) => {
         // showMessage(res.data.msg);
         setLastUpdate(Date.now()); // irasymas, update;
@@ -94,6 +95,7 @@ function Back() {
         setDeletePhoto
 
     }}>
+      <Nav />
         <div className="container">
             <div className="row">
                 <div className="col-4">
