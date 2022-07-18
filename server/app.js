@@ -50,3 +50,15 @@ FROM clothes
       res.send(result);
   });
 });
+
+//BACK DELETE CLOTHES
+app.delete("/admin/clothes/:id", (req, res) => {
+  const sql = `
+  DELETE FROM clothes
+  WHERE id = ?
+  `;
+  con.query(sql, [req.params.id], (err, result) => {
+      if (err) throw err;
+      res.send({ result, msg: { text: 'OK, Cat gone', type: 'success' } });
+  });
+});
