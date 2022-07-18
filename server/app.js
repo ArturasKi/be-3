@@ -62,3 +62,29 @@ app.delete("/admin/clothes/:id", (req, res) => {
       res.send({ result, msg: { text: 'OK, Cat gone', type: 'success' } });
   });
 });
+
+//BACK DELETE PHOTO
+app.delete("/admin/photos/:id", (req, res) => {
+  const sql = `
+  UPDATE clothes
+  SET photo = null
+  WHERE id = ?
+  `;
+  con.query(sql, [req.params.id], (err, result) => {
+      if (err) throw err;
+      res.send({ result, msg: { text: 'OK, photo gone. Have a nice day.', type: 'success' } });
+  });
+});
+
+//BACK EDIT CLOTHES
+app.put("/admin/clothes/:id", (req, res) => {
+  const sql = `
+  UPDATE clothes
+  SET color = ?, type = ?, price = ?, photo = ?
+  WHERE id = ?
+  `;
+  con.query(sql, [req.body.color, req.body.type, req.body.price, req.body.photo, req.params.id], (err, result) => {
+      if (err) throw err;
+      res.send({ result, msg: { text: 'OK, Cat updated. Now it is as new', type: 'success' } });
+  });
+});

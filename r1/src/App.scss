@@ -2,6 +2,180 @@ body {
     background-color: #282c34;
 }
 
+.list-group-item {
+    .item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            .box {
+                width: 15px;
+                height: 15px;
+                border: 1px solid coral;
+                margin: 0 10px 0 10px;
+            }
+            .cat {
+                font-size: 75%;
+                color: skyblue;
+                text-decoration: underline;
+                margin-left: 40px;
+                cursor: pointer;
+            }
+        }
+        .nest-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            li {
+                background-color: aliceblue;
+                color: pink;
+            }
+        }
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        b {
+            margin-right: 7px;
+        }
+        i {
+            margin-left: 7px;
+        }
+        u {
+            margin-left: 7px;
+            color: skyblue;
+        }
+        .com-bin {
+            width: 100%;
+        }
+        p {
+            font-size: 12px;
+            color: gray;
+            width: 80%;
+        }
+        h5 {
+            min-width: 20%;
+        }
+        &.front {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            .comments {
+                margin: 10px 0;
+                padding: 10px;
+                border: 1px solid pink;
+                border-radius: 5px;
+                width: 100%;
+                h5 {
+                    color: pink;
+                }
+            }
+        }
+    }
+}
+
+.list-group-item {
+    .item-front {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .form-group {
+            width: 100%;
+        }
+        textarea {
+            width: 100%;
+        }
+        .nest-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            li {
+                background-color: aliceblue;
+                color: pink;
+            }
+        }
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        b {
+            margin-right: 7px;
+        }
+        i {
+            margin-left: 7px;
+        }
+        u {
+            margin-left: 7px;
+            color: skyblue;
+        }
+    }
+}
+
+.modal {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.show-message {
+    display: flex;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    width: 100%;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 3;
+    opacity: 0.7;
+    .alert-danger {
+        background-color: #f8d7dac2;
+    }
+    .alert-info {
+        background-color: #d1ecf1c2;
+    }
+    .alert-success {
+        background-color: #d4eddac2;
+    }
+    div {
+        width: 50%;
+        margin-right: 30px;
+    }
+}
+
+button.with-loader {
+    .spinner-border {
+        display: none;
+    }
+}
+
+button.with-loader:disabled {
+    .spinner-border {
+        display: inline-block;
+    }
+}
+
+nav.nav {
+    background-color: aliceblue;
+    border: 1px solid rgba(0,0,0,.125);
+    border-top: none;
+}
+
 .photo-bin {
     // display: flex;
     // align-items: center;
@@ -12,4 +186,22 @@ body {
         width: 100%;
         height: auto;
     }
+}
+
+.photo-bin-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    max-width: 300px;
+    img {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.login {
+    background-color:moccasin
 }

@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Front/>} />
           {/* <Route path="/login" element={<LoginPage />} />
           <Route path="/logout" element={<LogoutPage />} /> */}
-          <Route path="/admin" element={<Back show="admin" />} />
+          <Route path="/admin" element={<Back/>} />
           {/* <Route path="/admin/cats" element={<RequireAuth role="admin"><Back show="cats"/></RequireAuth>} />
           <Route path="/admin/products" element={<RequireAuth role="admin"><Back show="products"/></RequireAuth>} />
           <Route path="/admin/comments" element={<RequireAuth role="admin"><Back show="com"/></RequireAuth>} /> */}

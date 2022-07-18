@@ -3,15 +3,15 @@ import BackContext from "../BackContext";
 
 function Clothes({clothes}) {
 
-    const { setDeleteClothes } = useContext(BackContext);
+    const { setDeleteClothes, setModalClothes } = useContext(BackContext);
 
     const handleDelete = () => {
         setDeleteClothes(clothes);
     }
     
-    // const handleEdit = () => {
-    //     setModalCat(line);
-    // }
+    const handleEdit = () => {
+        setModalClothes(clothes);
+    }
 
     return (
         <li className="list-group-item">
@@ -25,7 +25,7 @@ function Clothes({clothes}) {
                     }
                 </div>
                 <div className="buttons">
-                    <button type="button" className="btn btn-outline-success ml-2">Edit</button>
+                    <button type="button" className="btn btn-outline-success ml-2" onClick={handleEdit}>Edit</button>
                     <button type="button" className="btn btn-outline-danger ml-2" onClick={handleDelete}>Delete</button>
                 </div>
             </div>
