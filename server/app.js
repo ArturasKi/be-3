@@ -185,6 +185,19 @@ app.put("/admin/clothes/:id", (req, res) => {
   });
 });
 
+//FRONT READ CLOTHES
+app.get("/clothes", (req, res) => {
+  const sql = `
+SELECT *
+FROM clothes
+`;
+  con.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+  });
+});
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
