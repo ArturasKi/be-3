@@ -131,7 +131,7 @@ app.post("/admin/clothes", (req, res) => {
     req.body.photo
   ], (err, result) => {
       if (err) throw err;
-      res.send({ result, msg: { text: 'OK, new Cat was created', type: 'success' } });
+      res.send({ result });
   });
 });
 
@@ -155,7 +155,7 @@ app.delete("/admin/clothes/:id", (req, res) => {
   `;
   con.query(sql, [req.params.id], (err, result) => {
       if (err) throw err;
-      res.send({ result, msg: { text: 'OK, Cat gone', type: 'success' } });
+      res.send({ result });
   });
 });
 
@@ -168,7 +168,7 @@ app.delete("/admin/photos/:id", (req, res) => {
   `;
   con.query(sql, [req.params.id], (err, result) => {
       if (err) throw err;
-      res.send({ result, msg: { text: 'OK, photo gone. Have a nice day.', type: 'success' } });
+      res.send({ result });
   });
 });
 
@@ -181,7 +181,7 @@ app.put("/admin/clothes/:id", (req, res) => {
   `;
   con.query(sql, [req.body.color, req.body.type, req.body.price, req.body.photo, req.params.id], (err, result) => {
       if (err) throw err;
-      res.send({ result, msg: { text: 'OK, Cat updated. Now it is as new', type: 'success' } });
+      res.send({ result });
   });
 });
 
@@ -197,7 +197,31 @@ FROM clothes
   });
 });
 
+//FRONT READ ORDERS
+app.get("/orders", (req, res) => {
+  const sql = `
+SELECT *
+FROM orders
+`;
+  con.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+  });
+});
 
+//FRONT CREATE ORDER
+app.post("/orders", (req, res) => {
+  const sql = `
+  INSERT INTO orders
+  (size, clothes_id, users_id)
+  VALUES (?, ?, ?)
+  `;
+  con.query(sql, [req.body.size, req.body.clothes_id , req.body.users_id], (err, result) => {
+      if (err) throw err;
+
+      res.send({ result });
+  });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

@@ -1,10 +1,24 @@
 // import { useContext } from "react";
-// import BackContext from "../BackContext";
-import { useState } from "react";
+import FrontContext from "./FrontContext";
+import { useState, useContext } from "react";
 
 function Clothes({clothes}) {
 
+    const { setAddOrder } = useContext(FrontContext);
+
     const [size, setSize] = useState('');
+    // const [price, setPrice] = useState('');
+
+    const handleAdd = () => {
+        const data = { 
+            size: size,
+            // price: parseFloat(price)
+         };
+         console.log(data);
+            setAddOrder(data);
+            setSize('');
+            // setPrice('');
+    }
 
     return (
         <li className="list-group-item">
@@ -18,11 +32,7 @@ function Clothes({clothes}) {
                     }
                     <div className="form-group">
                         <label>Size</label>
-                        <select
-                            className="form-control"
-                            value={size}
-                            onChange={(e) => setSize(e.target.value)}
-                        >
+                        <select className="form-control" value={size} onChange={(e) => setSize(e.target.value)}>
                             <option value="0">Select size</option>
                             <option value="1">XS</option>
                             <option value="2">S</option>
@@ -32,6 +42,9 @@ function Clothes({clothes}) {
                             <option value="6">XXL</option>
                         </select>
                         <small className="form-text text-muted">Select category here.</small>
+                    </div>
+                    <div className="buttons">
+                        <button type="button" className="btn btn-outline-success ml-2" onClick={handleAdd}>Add to cart</button>
                     </div>
                 </div>
             </div>
