@@ -131,3 +131,15 @@ nav.nav {
 .order-list {
     font-size: 12px;
 }
+
+.order-amount {
+    position: absolute;
+    top: -2px;
+    right: 2px;
+    font-weight: bold;
+}
+
+.total {
+    display: flex;
+    justify-content: end;
+}

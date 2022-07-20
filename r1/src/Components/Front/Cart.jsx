@@ -42,6 +42,15 @@ function Cart({clothes}) {
                 }
               </ul>
             </div>
+            <div className="total">
+              <b>
+              Total price:{' '}
+              {
+                order === null ? null : order.reduce((total, item) => total + +item.price, 0).toFixed(2)
+              }{' '}
+              EUR
+              </b>
+            </div>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-outline-primary" onClick={handleProcceed}>Procceed</button>
