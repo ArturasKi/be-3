@@ -2,7 +2,6 @@ import { useContext } from "react";
 import Clothes from "./Clothes";
 import FrontContext from "./FrontContext";
 
-
 function List() {
 
     const { clothes, setModalCart, order } = useContext(FrontContext);
