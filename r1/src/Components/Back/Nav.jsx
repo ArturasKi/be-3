@@ -19,6 +19,11 @@ function Nav() {
                         } : undefined
                         }>Front</NavLink>
                         <Link className="nav-link" to="/logout">Logout</Link>
+                        {/* <NavLink to="/cart" className="nav-link nav-link-cart" style={({ isActive }) => // funkcija gauna argumentą isActive, jei true vienas stilus, false - kitas;
+                        isActive ? {
+                            color: 'crimson'
+                        } : undefined
+                        }>Cart</NavLink> */}
                     </nav>
                 </div>
             </div>

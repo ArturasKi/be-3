@@ -5,14 +5,17 @@ import { useState, useEffect } from "react";
 import { authConfig } from "../../Functions/auth";
 import axios from "axios";
 import List from './List';
+import Cart from './Cart';
 
 function Front() {
 
   const [lastUpdate, setLastUpdate] = useState(Date.now());
 
   const [clothes, setClothes] = useState(null);
+  const [users, setUsers] = useState(null);
   const [order, setOrder] = useState(null);
   const [addOrder, setAddOrder] = useState(null);
+  const [modalCart, setModalCart] = useState(null);
 
   // READ CLOTHES
   useEffect(() => {
@@ -26,6 +29,13 @@ function Front() {
     axios
       .get("http://localhost:3003/orders", authConfig())
       .then((res) => setOrder(res.data));
+  }, []);
+
+  // READ USER
+  useEffect(() => {
+    axios
+      .get("http://localhost:3003/users", authConfig())
+      .then((res) => setUsers(res.data));
   }, []);
 
   // CREATE ORDER
@@ -47,16 +57,20 @@ function Front() {
       clothes,
       order,
       setClothes,
-      setAddOrder
+      setAddOrder,
+      users,
+      modalCart,
+      setModalCart
     }}>
       <Nav />
         <div className="container">
             <div className="row">
-                <div className="col-6">
+                <div className="col-12">
                   <List />
                 </div>
             </div>
         </div>
+        <Cart />
     </FrontContext.Provider>
   );
 }

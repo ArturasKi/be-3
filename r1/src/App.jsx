@@ -14,6 +14,7 @@ function App() {
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<RequireAuth role="user"><Front show="clothes"/></RequireAuth>} />
+          <Route path="/cart" element={<RequireAuth role="user"><Front show="cart"/></RequireAuth>} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/logout" element={<LogoutPage />} />
           <Route path="/admin" element={<RequireAuth role="admin"><Back show="clothes"/></RequireAuth>} />

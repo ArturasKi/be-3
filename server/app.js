@@ -197,6 +197,20 @@ FROM clothes
   });
 });
 
+//FRONT CREATE ORDER
+app.post("/orders", (req, res) => {
+  const sql = `
+  INSERT INTO orders
+  (size, price, type, color, clothes_id, users_id)
+  VALUES (?, ?, ?, ?, ?, ?)
+  `;
+  con.query(sql, [req.body.size, req.body.price, req.body.type, req.body.color, req.body.clothesId, req.body.usersId], (err, result) => {
+      if (err) throw err;
+
+      res.send({ result });
+  });
+});
+
 //FRONT READ ORDERS
 app.get("/orders", (req, res) => {
   const sql = `
@@ -209,17 +223,15 @@ FROM orders
   });
 });
 
-//FRONT CREATE ORDER
-app.post("/orders", (req, res) => {
+//FRONT READ USERS
+app.get("/users", (req, res) => {
   const sql = `
-  INSERT INTO orders
-  (size, clothes_id, users_id)
-  VALUES (?, ?, ?)
-  `;
-  con.query(sql, [req.body.size, req.body.clothes_id , req.body.users_id], (err, result) => {
+SELECT *
+FROM users
+`;
+  con.query(sql, (err, result) => {
       if (err) throw err;
-
-      res.send({ result });
+      res.send(result);
   });
 });
 

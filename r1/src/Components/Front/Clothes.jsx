@@ -4,20 +4,22 @@ import { useState, useContext } from "react";
 
 function Clothes({clothes}) {
 
-    const { setAddOrder } = useContext(FrontContext);
+    const { setAddOrder, users } = useContext(FrontContext);
 
     const [size, setSize] = useState('');
-    // const [price, setPrice] = useState('');
 
     const handleAdd = () => {
         const data = { 
-            size: size,
-            // price: parseFloat(price)
+            size,
+            price: clothes.price,
+            type: clothes.type,
+            color: clothes.color,
+            usersId: users[0].id,
+            clothesId: clothes.id
          };
          console.log(data);
             setAddOrder(data);
             setSize('');
-            // setPrice('');
     }
 
     return (
