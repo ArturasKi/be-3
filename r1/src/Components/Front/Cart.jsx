@@ -1,6 +1,5 @@
 import { useContext, useEffect } from "react";
 import FrontContext from "./FrontContext.jsx";
-// import getBase64 from "../../../Functions/getBase64.js";
 
 function Cart({clothes}) {
 
@@ -13,7 +12,7 @@ function Cart({clothes}) {
 }, [modalCart, clothes]);
 
   const handleProcceed = () => {
-    
+    console.log('OK OK OK !')
   }
 
   if (modalCart === null) {
@@ -35,15 +34,9 @@ function Cart({clothes}) {
             </button>
           </div>
           <div className="modal-body">
-          <div className="form-group">
-            {/* <p>Color: {clothes.color}</p> */}
-            {/* <p>Type: {clothes.type}</p>
-            <p>Size: {clothes.size}</p>
-            <p>Price: {clothes.price}</p> */}
-        </div>
-          {/* {
-            clothes.photoPrint ? <div className="photo-bin-modal"><img src={clothes.photoPrint} alt='nice'/></div> : null
-          } */}
+            <div className="form-group">
+              Kazkas
+            </div>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-outline-primary" onClick={handleProcceed}>Procceed</button>
