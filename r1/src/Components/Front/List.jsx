@@ -5,7 +5,7 @@ import FrontContext from "./FrontContext";
 
 function List() {
 
-    const { clothes, setModalCart } = useContext(FrontContext);
+    const { clothes, setModalCart, order } = useContext(FrontContext);
 
     return (
         <div className="card mt-4">
@@ -18,6 +18,9 @@ function List() {
                         </svg>
                     </i>  
                 </button>
+                {
+                    order ? order.map(o => <p key={o.id}>{o.id}</p>) : null
+                }
             </div>
             <div className="card-body">
                 <ul className="list-group">

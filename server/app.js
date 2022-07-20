@@ -235,6 +235,18 @@ FROM users
   });
 });
 
+//FRONT DELETE ORDER
+app.delete("/orders/:id", (req, res) => {
+  const sql = `
+  DELETE FROM orders
+  WHERE id = ?
+  `;
+  con.query(sql, [req.params.id], (err, result) => {
+      if (err) throw err;
+      res.send({ result });
+  });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

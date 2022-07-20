@@ -1,11 +1,13 @@
-// import { useContext } from "react";
-// import FrontContext from "./FrontContext";
+import { useContext } from "react";
+import FrontContext from "./FrontContext";
 // import { useState, useContext } from "react";
 
 function Order({order}) {
 
-    const handleRemove = () => {
+    const { setDeleteOrder } = useContext(FrontContext);
 
+    const handleRemove = () => {
+        setDeleteOrder(order);
     }
 
     return (

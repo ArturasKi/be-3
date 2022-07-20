@@ -17,6 +17,7 @@ function Front() {
   const [addOrder, setAddOrder] = useState(null);
   const [editOrder, setEditOrder] = useState(null);
   const [modalCart, setModalCart] = useState(null);
+  const [deleteOrder, setDeleteOrder] = useState(null);
 
   // READ CLOTHES
   useEffect(() => {
@@ -67,6 +68,20 @@ function Front() {
       });
   }, [editOrder]);
 
+  // DELETE ORDER
+  useEffect(() => {
+    if (null === deleteOrder) return;
+    axios
+      .delete("http://localhost:3003/orders/" + deleteOrder.id, authConfig())
+      .then((res) => {
+        // showMessage(res.data.msg);
+        setLastUpdate(Date.now()); // irasymas, update;
+      })
+      .catch((error) => {
+        // showMessage({ text: error.message, type: "danger" });
+      });
+  }, [deleteOrder]);
+
   return (
     <FrontContext.Provider value={{
       clothes,
@@ -76,7 +91,8 @@ function Front() {
       users,
       modalCart,
       setModalCart,
-      setEditOrder
+      setEditOrder,
+      setDeleteOrder
     }}>
       <Nav />
         <div className="container">
