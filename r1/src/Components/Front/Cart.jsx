@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
 import FrontContext from "./FrontContext.jsx";
+import Order from "./Order.jsx";
 
 function Cart({clothes}) {
 
-  const { modalCart, setModalCart } = useContext(FrontContext);
+  const { modalCart, setModalCart, order } = useContext(FrontContext);
 
   useEffect(() => {
     if (null === modalCart) {
@@ -35,7 +36,11 @@ function Cart({clothes}) {
           </div>
           <div className="modal-body">
             <div className="form-group">
-              Kazkas
+              <ul className="list-group">
+                {
+                  order ? order.map(o => <Order key={o.id} order={o}></Order>) : null
+                }
+              </ul>
             </div>
           </div>
           <div className="modal-footer">
