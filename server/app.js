@@ -82,7 +82,7 @@ app.get("/login-check", (req, res) => {
   } else {
       sql = `
       SELECT
-      name
+      name, id
       FROM users
       WHERE session = ?
       `;
@@ -93,7 +93,7 @@ app.get("/login-check", (req, res) => {
       if (!result.length) {
           res.send({ msg: 'error' });
       } else {
-          res.send({ msg: 'ok' });
+          res.send({ msg: 'ok', result });
       }
   });
 });
@@ -226,7 +226,7 @@ FROM orders
 //FRONT READ USERS
 app.get("/users", (req, res) => {
   const sql = `
-SELECT *
+SELECT name, id
 FROM users
 `;
   con.query(sql, (err, result) => {

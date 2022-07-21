@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 
 function Clothes({clothes}) {
 
-    const { setAddOrder, users } = useContext(FrontContext);
+    const { setAddOrder, users} = useContext(FrontContext);
 
     const [size, setSize] = useState('');
 
@@ -14,13 +14,14 @@ function Clothes({clothes}) {
             price: clothes.price,
             type: clothes.type,
             color: clothes.color,
-            usersId: users[0].id,
+            usersId: users.id,
             clothesId: clothes.id
          };
          console.log(data);
             setAddOrder(data);
             setSize('');
     }
+
 
     return (
         <li className="list-group-item">

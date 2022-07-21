@@ -35,9 +35,10 @@ function Front() {
 
   // READ USER
   useEffect(() => {
+    // console.log(JSON.parse(localStorage.getItem('user'))[0].id)
     axios
       .get("http://localhost:3003/users", authConfig())
-      .then((res) => setUsers(res.data));
+      .then((res) => setUsers(res.data.find(el => el.id === JSON.parse(localStorage.getItem('user'))[0].id)));
   }, []);
 
   // CREATE ORDER
@@ -92,7 +93,7 @@ function Front() {
       modalCart,
       setModalCart,
       setEditOrder,
-      setDeleteOrder
+      setDeleteOrder, 
     }}>
       <Nav />
         <div className="container">

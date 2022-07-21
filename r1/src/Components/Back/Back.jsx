@@ -10,6 +10,7 @@ import Create from "./Rubas/Create";
 import Edit from "./Rubas/Edit";
 // import { v4 as uuidv4 } from "uuid";
 import { authConfig } from '../../Functions/auth.js';
+import OrderList from "./Rubas/OrderList";
 
 function Back() {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
@@ -20,12 +21,20 @@ function Back() {
   const [editClothes, setEditClothes] = useState(null);
   const [modalClothes, setModalClothes] = useState(null);
   const [deletePhoto, setDeletePhoto] = useState(null);
+  const [revOrder, setRevOrder] = useState(null);
 
 // READ CLOTHING
   useEffect(() => {
     axios
       .get("http://localhost:3003/admin/clothes", authConfig())
       .then((res) => setClothes(res.data));
+  }, [lastUpdate]);
+
+// READ REVIEW ORDER
+  useEffect(() => {
+    axios
+      .get("http://localhost:3003/orders", authConfig())
+      .then((res) => setRevOrder(res.data));
   }, [lastUpdate]);
     
 // CREATE CLOTHING
@@ -92,14 +101,15 @@ function Back() {
         setEditClothes,
         modalClothes,
         setModalClothes,
-        setDeletePhoto
-
+        setDeletePhoto,
+        revOrder
     }}>
       <Nav />
         <div className="container">
             <div className="row">
                 <div className="col-4">
                     <Create />
+                    <OrderList />
                 </div>
                 <div className="col-8">
                     <List/>

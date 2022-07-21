@@ -9,11 +9,12 @@ import Back from "./Components/Back/Back";
 import Front from "./Components/Front/Front"; 
 
 function App() {
+
     
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/" element={<RequireAuth role="user"><Front show="clothes"/></RequireAuth>} />
+          <Route path="/" element={<RequireAuth role="user" ><Front show="clothes" /></RequireAuth>} />
           <Route path="/cart" element={<RequireAuth role="user"><Front show="cart"/></RequireAuth>} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/logout" element={<LogoutPage />} />
@@ -28,11 +29,13 @@ function App() {
 
 function RequireAuth({ children, role }) {
   const [view, setView] = useState(<h2>Please wait...</h2>);
+  
 
   useEffect(() => {
     axios.get('http://localhost:3003/login-check?role=' + role, authConfig())
       .then(res => {
         if ('ok' === res.data.msg) {
+        localStorage.setItem('user', JSON.stringify(res.data.result))
           setView(children);
         } else {
           setView(<Navigate to="/login" replace />);
@@ -40,8 +43,7 @@ function RequireAuth({ children, role }) {
       })
   }, [children, role]);
   return view;
-}
-
+}     
 function LoginPage() {
   const navigate = useNavigate();
 
