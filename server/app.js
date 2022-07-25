@@ -215,7 +215,7 @@ app.post("/orders", (req, res) => {
 app.get("/orders", (req, res) => {
   const sql = `
 SELECT *
-FROM orders
+FROM orders AS revOrder
 `;
   con.query(sql, (err, result) => {
       if (err) throw err;

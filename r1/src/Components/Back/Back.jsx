@@ -24,7 +24,7 @@ function Back() {
   const [deletePhoto, setDeletePhoto] = useState(null);
 
   const [revOrder, setRevOrder] = useState(null);
-  // const [acceptRevOrder, setAcceptRevOrder] = useState(null);
+  const [acceptRevOrder, setAcceptRevOrder] = useState(null);
   const [removeRevOrder, setRemoveRevOrder] = useState(null);
 
 // READ CLOTHING
@@ -111,19 +111,19 @@ function Back() {
       });
   }, [editClothes]);
 
-  // // EDIT ORDER
-  // useEffect(() => {
-  //   if (null === acceptRevOrder) return;
-  //   axios
-  //     .put("http://localhost:3003/orders/" + acceptRevOrder.id, acceptRevOrder, authConfig())
-  //     .then((res) => {
-  //       // showMessage(res.data.msg);
-  //       setLastUpdate(Date.now()); // irasymas, update;
-  //     })
-  //     .catch((error) => {
-  //       // showMessage({ text: error.message, type: "info" });
-  //     });
-  // }, [acceptRevOrder]);
+  // EDIT ORDER
+  useEffect(() => {
+    if (null === acceptRevOrder) return;
+    axios
+      .put("http://localhost:3003/orders/" + acceptRevOrder.id, acceptRevOrder, authConfig())
+      .then((res) => {
+        // showMessage(res.data.msg);
+        setLastUpdate(Date.now()); // irasymas, update;
+      })
+      .catch((error) => {
+        // showMessage({ text: error.message, type: "info" });
+      });
+  }, [acceptRevOrder]);
 
   return (
     <BackContext.Provider value={{
@@ -136,6 +136,7 @@ function Back() {
         setDeletePhoto,
         revOrder,
         setRemoveRevOrder,
+        setAcceptRevOrder
     }}>
       <Nav />
         <div className="container">
