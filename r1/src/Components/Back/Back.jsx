@@ -13,6 +13,7 @@ import { authConfig } from '../../Functions/auth.js';
 import OrderList from "./Rubas/OrderList";
 
 function Back() {
+
   const [lastUpdate, setLastUpdate] = useState(Date.now());
 
   const [clothes, setClothes] = useState(null);
@@ -21,7 +22,10 @@ function Back() {
   const [editClothes, setEditClothes] = useState(null);
   const [modalClothes, setModalClothes] = useState(null);
   const [deletePhoto, setDeletePhoto] = useState(null);
+
   const [revOrder, setRevOrder] = useState(null);
+  // const [acceptRevOrder, setAcceptRevOrder] = useState(null);
+  const [removeRevOrder, setRemoveRevOrder] = useState(null);
 
 // READ CLOTHING
   useEffect(() => {
@@ -65,6 +69,20 @@ function Back() {
       });
   }, [deleteClothes]);
 
+// DELETE REV ORDER
+  useEffect(() => {
+    if (null === removeRevOrder) return;
+    axios
+      .delete("http://localhost:3003/orders/" + removeRevOrder.id, authConfig())
+      .then((res) => {
+        // showMessage(res.data.msg);
+        setLastUpdate(Date.now()); // irasymas, update;
+      })
+      .catch((error) => {
+        // showMessage({ text: error.message, type: "danger" });
+      });
+  }, [removeRevOrder]);
+
   // DELETE PHOTO
   useEffect(() => {
     if (null === deletePhoto) return;
@@ -93,6 +111,20 @@ function Back() {
       });
   }, [editClothes]);
 
+  // // EDIT ORDER
+  // useEffect(() => {
+  //   if (null === acceptRevOrder) return;
+  //   axios
+  //     .put("http://localhost:3003/orders/" + acceptRevOrder.id, acceptRevOrder, authConfig())
+  //     .then((res) => {
+  //       // showMessage(res.data.msg);
+  //       setLastUpdate(Date.now()); // irasymas, update;
+  //     })
+  //     .catch((error) => {
+  //       // showMessage({ text: error.message, type: "info" });
+  //     });
+  // }, [acceptRevOrder]);
+
   return (
     <BackContext.Provider value={{
         clothes,
@@ -102,7 +134,8 @@ function Back() {
         modalClothes,
         setModalClothes,
         setDeletePhoto,
-        revOrder
+        revOrder,
+        setRemoveRevOrder,
     }}>
       <Nav />
         <div className="container">

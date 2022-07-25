@@ -15,7 +15,7 @@ function Front() {
   const [users, setUsers] = useState(null);
   const [order, setOrder] = useState(null);
   const [addOrder, setAddOrder] = useState(null);
-  const [editOrder, setEditOrder] = useState(null);
+  // const [editOrder, setEditOrder] = useState(null);
   const [modalCart, setModalCart] = useState(null);
   const [deleteOrder, setDeleteOrder] = useState(null);
 
@@ -55,19 +55,19 @@ function Front() {
       });
   }, [addOrder]);
 
-  // EDIT ORDER
-  useEffect(() => {
-    if (null === editOrder) return;
-    axios
-      .put("http://localhost:3003/orders/" + editOrder.id, editOrder, authConfig())
-      .then((res) => {
-        // showMessage(res.data.msg);
-        setLastUpdate(Date.now()); // irasymas, update;
-      })
-      .catch((error) => {
-        // showMessage({ text: error.message, type: "info" });
-      });
-  }, [editOrder]);
+  // // EDIT ORDER
+  // useEffect(() => {
+  //   if (null === editOrder) return;
+  //   axios
+  //     .put("http://localhost:3003/orders/" + editOrder.id, editOrder, authConfig())
+  //     .then((res) => {
+  //       // showMessage(res.data.msg);
+  //       setLastUpdate(Date.now()); // irasymas, update;
+  //     })
+  //     .catch((error) => {
+  //       // showMessage({ text: error.message, type: "info" });
+  //     });
+  // }, [editOrder]);
 
   // DELETE ORDER
   useEffect(() => {
@@ -92,8 +92,7 @@ function Front() {
       users,
       modalCart,
       setModalCart,
-      setEditOrder,
-      setDeleteOrder, 
+      setDeleteOrder
     }}>
       <Nav />
         <div className="container">

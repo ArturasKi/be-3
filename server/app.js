@@ -201,10 +201,10 @@ FROM clothes
 app.post("/orders", (req, res) => {
   const sql = `
   INSERT INTO orders
-  (size, price, type, color, clothes_id, users_id)
-  VALUES (?, ?, ?, ?, ?, ?)
+  (size, price, type, color, clothes_id, users_id, verify)
+  VALUES (?, ?, ?, ?, ?, ?, ?)
   `;
-  con.query(sql, [req.body.size, req.body.price, req.body.type, req.body.color, req.body.clothesId, req.body.usersId], (err, result) => {
+  con.query(sql, [req.body.size, req.body.price, req.body.type, req.body.color, req.body.clothesId, req.body.usersId, req.body.verify ? 0 : 1], (err, result) => {
       if (err) throw err;
 
       res.send({ result });
@@ -242,6 +242,19 @@ app.delete("/orders/:id", (req, res) => {
   WHERE id = ?
   `;
   con.query(sql, [req.params.id], (err, result) => {
+      if (err) throw err;
+      res.send({ result });
+  });
+});
+
+//FRONT EDIT ORDER
+app.put("/orders/:id", (req, res) => {
+  const sql = `
+  UPDATE orders
+  SET verify = ?
+  WHERE id = ?
+  `;
+  con.query(sql, [req.body.verify, req.params.id], (err, result) => {
       if (err) throw err;
       res.send({ result });
   });
