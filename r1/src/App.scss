@@ -118,7 +118,7 @@ nav.nav {
 }
 
 .login {
-    background-color:moccasin
+    background-color:moccasin;
 }
 
 .nav-link-cart {
@@ -143,3 +143,32 @@ nav.nav {
     display: flex;
     justify-content: flex-end;
 }
+
+.aps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 77px;
+    height: 77px;
+    background-color: orange;
+    margin: 7px;
+    border-radius: 50%;
+  }
+  
+  .kv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    background-color: orange;
+    margin: 2px;
+    border-radius: 2px;
+  }
+  
+  .kvc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }

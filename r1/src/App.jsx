@@ -9,7 +9,6 @@ import Back from "./Components/Back/Back";
 import Front from "./Components/Front/Front"; 
 
 function App() {
-
     
   return (
     <BrowserRouter>
@@ -30,7 +29,6 @@ function App() {
 function RequireAuth({ children, role }) {
   const [view, setView] = useState(<h2>Please wait...</h2>);
   
-
   useEffect(() => {
     axios.get('http://localhost:3003/login-check?role=' + role, authConfig())
       .then(res => {
@@ -44,6 +42,7 @@ function RequireAuth({ children, role }) {
   }, [children, role]);
   return view;
 }     
+
 function LoginPage() {
   const navigate = useNavigate();
 
@@ -61,8 +60,8 @@ function LoginPage() {
       })
   }
   return (
-    <div className='container col-2'>
-      <div className='row'>
+    <div className='container col-3'>
+      <div className='row mt-4'>
         <div className='card login'>
           <div className='card-body'>
             <div className='form-group'>name: <input type="text" value={user} onChange={e => setUser(e.target.value)}></input></div>

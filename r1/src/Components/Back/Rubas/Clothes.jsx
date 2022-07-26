@@ -17,8 +17,8 @@ function Clothes({clothes}) {
         <li className="list-group-item">
             <div className="item">
                 <div className="content">
-                    <b>Color: {clothes.color}{' '}</b>
                     <b>Type: {clothes.type}{' '}</b>
+                    <b style={{color: clothes.color}}> Color: {clothes.color}{' '}</b>
                     <b>Price: {clothes.price} EUR</b>
                     {
                         clothes.photo ? <div className="photo-bin"><img src={clothes.photo} alt='nice'/></div> : null

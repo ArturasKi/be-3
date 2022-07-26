@@ -9,22 +9,22 @@ function OrderList() {
 
     const [verify, setVerify] = useState(0);
 
-    
-
-  //   useEffect(() => {
-  //     setVerify(revOrder.verify);
-  // }, [revOrder]);
+    useEffect(() => {
+      setVerify(revOrder);
+  }, [revOrder]);
 
     // REIK PAIMT MASYVO NARĮ revOrder[i]
 
+    // console.log(revOrder.filter((o, i) => [o][i])); 
+
     const handleOrderNo = () => {
-      console.log(revOrder.filter((o, i) => [o][i])); 
-      setRemoveRevOrder(revOrder); 
+      console.log(revOrder)
+      setRemoveRevOrder(revOrder[0]);
     }
 
     const handleOrderYes = () => {
       const data = {
-        verify: verify ? 0 : 1
+        verify: verify ? 1 : 0
     };
       console.log(data)
       // console.log(revOrder[0].verify ? 0 : 1)
@@ -42,7 +42,7 @@ function OrderList() {
                 {
                   revOrder ? revOrder.map(o => 
                   <li className="list-group" key={o.id}>
-                    <p className="mt-2">Order Id: <b>{o.id}</b> userId: <b>{o.users_id} </b> Verify: <b>{o.verify ? 'Yes' : 'No'}</b></p>
+                    <p className="mt-2">Order Id: <b>{o.id}</b> userId: <b>{o.users_id} </b> Verify: <b>{o.verify}</b></p>
                     <button type="button" className="btn btn-outline-success mt-2" onClick={handleOrderYes}>Accept</button>
                     <button type="button" className="btn btn-outline-danger mt-2" onClick={handleOrderNo}>Remove</button>
                   </li>) : null
