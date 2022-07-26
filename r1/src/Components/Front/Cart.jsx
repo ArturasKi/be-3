@@ -13,7 +13,8 @@ function Cart({clothes}) {
 }, [modalCart, clothes]);
 
   const handleProcceed = () => {
-    console.log('OK OK OK !')
+    console.log(order)
+    console.log(users.id)
   }
 
   if (modalCart === null) {

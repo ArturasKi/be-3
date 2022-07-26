@@ -1,7 +1,6 @@
 import Nav from '../Back/Nav';
 import FrontContext from './FrontContext';
 import { useState, useEffect } from "react";
-// import List from "./List";
 import { authConfig } from "../../Functions/auth";
 import axios from "axios";
 import List from './List';

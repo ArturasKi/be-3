@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Clothes from "./Clothes";
 import FrontContext from "./FrontContext";
+import Sort from "./Sort";
 
 function List() {
 
@@ -23,6 +24,7 @@ function List() {
                     </div>
                 </button>
             </div>
+            <Sort />
             <div className="card-body">
                 <ul className="list-group">
                     {
@@ -35,3 +37,7 @@ function List() {
 }
 
 export default List;
+
+// {
+//     clothes ? clothes.map(c => <Clothes key={c.id} clothes={c}></Clothes>) : null
+// }
