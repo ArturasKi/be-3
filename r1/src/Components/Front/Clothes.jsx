@@ -15,7 +15,8 @@ function Clothes({clothes}) {
             type: clothes.type,
             color: clothes.color,
             usersId: users.id,
-            clothesId: clothes.id
+            clothesId: clothes.id,
+            verify: clothes.verify ? 0 : 1
          };
          console.log(data);
             setAddOrder(data);

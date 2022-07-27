@@ -129,7 +129,7 @@ nav.nav {
 }
 
 .order-list {
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .order-amount {
@@ -143,32 +143,3 @@ nav.nav {
     display: flex;
     justify-content: flex-end;
 }
-
-.aps {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 77px;
-    height: 77px;
-    background-color: orange;
-    margin: 7px;
-    border-radius: 50%;
-  }
-  
-  .kv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10px;
-    height: 10px;
-    background-color: orange;
-    margin: 2px;
-    border-radius: 2px;
-  }
-  
-  .kvc {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }

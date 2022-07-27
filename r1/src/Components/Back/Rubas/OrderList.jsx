@@ -9,17 +9,22 @@ function OrderList() {
 
     const [verify, setVerify] = useState(0);
 
-    useEffect(() => {
-      setVerify(revOrder);
-  }, [revOrder]);
-
     // REIK PAIMT MASYVO NARĮ revOrder[i]
 
     // console.log(revOrder.filter((o, i) => [o][i])); 
 
-    const handleOrderNo = () => {
-      console.log(revOrder)
-      setRemoveRevOrder(revOrder[0]);
+    // const findById = (source, id) => {
+    //   for (let i = 0; i < source.length; i++) {
+    //     if (source[i].id === id) {
+    //       return source[i];
+    //     }
+    //   }
+    // } 
+
+    const handleOrderNo = (one) => {
+      console.log(revOrder.find((o) => o.id));
+      console.log(revOrder);
+      setRemoveRevOrder(one);
     }
 
     const handleOrderYes = () => {
@@ -27,6 +32,7 @@ function OrderList() {
         verify: verify ? 1 : 0
     };
       console.log(data)
+      console.log(verify)
       // console.log(revOrder[0].verify ? 0 : 1)
       // setAcceptRevOrder(revOrder[0].verify ? 0 : 1);
       setAcceptRevOrder(data);
@@ -44,7 +50,7 @@ function OrderList() {
                   <li className="list-group" key={o.id}>
                     <p className="mt-2">Order Id: <b>{o.id}</b> userId: <b>{o.users_id} </b> Verify: <b>{o.verify}</b></p>
                     <button type="button" className="btn btn-outline-success mt-2" onClick={handleOrderYes}>Accept</button>
-                    <button type="button" className="btn btn-outline-danger mt-2" onClick={handleOrderNo}>Remove</button>
+                    <button type="button" className="btn btn-outline-danger mt-2" onClick={() => handleOrderNo(o)}>Remove</button>
                   </li>) : null
                 }
                 </ul>

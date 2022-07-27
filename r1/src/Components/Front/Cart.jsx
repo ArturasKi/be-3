@@ -42,7 +42,7 @@ function Cart({clothes}) {
             <div className="form-group">
               <ul className="list-group">
                 {
-                  order ? order.map(o => <Order key={o.id} order={o}></Order>) : null
+                  order ? order.map(o => o.users_id === users.id ? <Order key={o.id} order={o}></Order> : null) : null
                 }
               </ul>
             </div>
