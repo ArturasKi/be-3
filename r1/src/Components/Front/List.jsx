@@ -5,7 +5,7 @@ import Sort from "./Sort";
 
 function List() {
 
-    const { clothes, setModalCart, order } = useContext(FrontContext);
+    const { clothes, setModalCart, order, users } = useContext(FrontContext);
 
     return (
         <div className="card mt-4">
@@ -19,7 +19,7 @@ function List() {
                     </i>  
                     <div className="order-amount">
                     {
-                        order === null ? null : order.length
+                        order === null ? null : order.filter(o => o.users_id === users.id).length
                     }
                     </div>
                 </button>

@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import { useState } from "react";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import BackContext from "../BackContext";
 
 function OrderList() {
@@ -8,18 +8,6 @@ function OrderList() {
     const { revOrder, setRemoveRevOrder, setAcceptRevOrder } = useContext(BackContext);
 
     const [verify, setVerify] = useState(0);
-
-    // REIK PAIMT MASYVO NARĮ revOrder[i]
-
-    // console.log(revOrder.filter((o, i) => [o][i])); 
-
-    // const findById = (source, id) => {
-    //   for (let i = 0; i < source.length; i++) {
-    //     if (source[i].id === id) {
-    //       return source[i];
-    //     }
-    //   }
-    // } 
 
     const handleOrderNo = (one) => {
       console.log(revOrder.find((o) => o.id));

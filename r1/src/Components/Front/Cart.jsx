@@ -13,7 +13,7 @@ function Cart({clothes}) {
 }, [modalCart, clothes]);
 
   const handleProcceed = () => {
-    console.log(order)
+    console.log(order.users_id)
     console.log(users.id)
   }
 
@@ -50,7 +50,7 @@ function Cart({clothes}) {
               <b>
               Total price:{' '}
               {
-                order ? order.reduce((total, item) => total + +item.price, 0).toFixed(2) : null
+                order ? order.filter(o => o.users_id === users.id).reduce((total, item) => total + +item.price, 0).toFixed(2) : null
               }{' '}
               EUR
               </b>
