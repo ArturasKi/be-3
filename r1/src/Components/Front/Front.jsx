@@ -18,6 +18,9 @@ function Front() {
   const [modalCart, setModalCart] = useState(null);
   const [deleteOrder, setDeleteOrder] = useState(null);
 
+  const [confOrder, setConfOrder] = useState(null);
+  const [createConfOrder, setCreateConfOrder] = useState(null);
+
   // READ CLOTHES
   useEffect(() => {
     axios
@@ -40,6 +43,13 @@ function Front() {
       .then((res) => setUsers(res.data.find(el => el.id === JSON.parse(localStorage.getItem('user'))[0].id)));
   }, []);
 
+  // READ CONFIRMED ORDERS
+  useEffect(() => {
+    axios
+      .get("http://localhost:3003/confirmed-orders", authConfig())
+      .then((res) => setConfOrder(res.data));
+  }, []);
+
   // CREATE ORDER
   useEffect(() => {
     if (null === addOrder) return;
@@ -53,6 +63,20 @@ function Front() {
         // showMessage({ text: error.message, type: "success" });
       });
   }, [addOrder]);
+
+  // CREATE CONFIRMED ORDER
+  useEffect(() => {
+    if (null === createConfOrder) return;
+    axios
+      .post("http://localhost:3003/confirmed-orders", createConfOrder, authConfig())
+      .then((res) => {
+        // showMessage(res.data.msg);
+        setLastUpdate(Date.now()); // irasymas, update;
+      })
+      .catch((error) => {
+        // showMessage({ text: error.message, type: "success" });
+      });
+  }, [createConfOrder]);
 
   // // EDIT ORDER
   // useEffect(() => {
@@ -91,7 +115,9 @@ function Front() {
       users,
       modalCart,
       setModalCart,
-      setDeleteOrder
+      setDeleteOrder,
+      confOrder,
+      setCreateConfOrder
     }}>
       <Nav />
         <div className="container">
