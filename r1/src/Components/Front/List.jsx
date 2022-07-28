@@ -22,7 +22,7 @@ function List() {
                     </i>
                     <div className="order-amount">
                     {
-                        order ? order.filter(o => o.users_id === users.id).length : null // BLOGAI, REIK TVARKYTI
+                        order ? order.filter(o => o.users_id === users.id).length : null
                     }
                     </div>
                 </button>

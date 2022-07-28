@@ -15,6 +15,8 @@ function Cart({clothes}) {
   const handleProcceed = () => {
     console.log(order.users_id)
     console.log(users.id)
+    console.log(order ? [...order].filter(o => o.users_id === users.id).length : null)
+    console.log(order)
   }
 
   if (modalCart === null) {
