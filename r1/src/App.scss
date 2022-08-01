@@ -55,7 +55,7 @@ body {
 
 .show-message {
     display: flex;
-    position: absolute;
+    position: fixed;
     bottom: 50px;
     right: 50px;
     width: 100%;
@@ -63,7 +63,7 @@ body {
     flex-direction: column;
     align-items: flex-end;
     z-index: 3;
-    opacity: 0.7;
+    opacity: 0.9;
     .alert-danger {
         background-color: #f8d7dac2;
     }
@@ -78,6 +78,26 @@ body {
         margin-right: 30px;
     }
 }
+
+// .show-message {
+//     display: flex;
+//     position: fixed;
+//     top: 100px;
+//     right: 35px;
+//     width: 100%;
+//     justify-content: flex-end;
+//   }
+  
+  .alert {
+    background: aquamarine;
+    // border: 1px solid aquamarine;
+    border-radius: 6px;
+    padding: 1rem;
+    font-weight: bold;
+    color: #282c34;
+    // text-transform: uppercase;
+    opacity: 0.9;
+  }
 
 button.with-loader {
     .spinner-border {

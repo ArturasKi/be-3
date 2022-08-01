@@ -11,6 +11,7 @@ import Edit from "./Rubas/Edit";
 // import { v4 as uuidv4 } from "uuid";
 import { authConfig } from '../../Functions/auth.js';
 import OrderList from "./Rubas/OrderList";
+import Message from './Rubas/Message';
 
 function Back() {
 
@@ -27,6 +28,8 @@ function Back() {
   const [editRevOrder, setEditRevOrder] = useState(null);
   const [acceptRevOrder, setAcceptRevOrder] = useState(null);
   const [removeRevOrder, setRemoveRevOrder] = useState(null);
+
+  const [message, setMessage] = useState(null);
 
 // READ CLOTHING
   useEffect(() => {
@@ -48,11 +51,11 @@ function Back() {
     axios
       .post("http://localhost:3003/admin/clothes", createClothes, authConfig())
       .then((res) => {
-        // showMessage(res.data.msg);
+        showMessage(res.data.msg);
         setLastUpdate(Date.now()); // irasymas, update;
       })
       .catch((error) => {
-        // showMessage({ text: error.message, type: "success" });
+        showMessage({ text: error.message, type: "success" });
       });
   }, [createClothes]);
 
@@ -62,11 +65,11 @@ function Back() {
     axios
       .delete("http://localhost:3003/admin/clothes/" + deleteClothes.id, authConfig())
       .then((res) => {
-        // showMessage(res.data.msg);
+        showMessage(res.data.msg);
         setLastUpdate(Date.now()); // irasymas, update;
       })
       .catch((error) => {
-        // showMessage({ text: error.message, type: "danger" });
+        showMessage({ text: error.message, type: "danger" });
       });
   }, [deleteClothes]);
 
@@ -76,11 +79,11 @@ function Back() {
     axios
       .delete("http://localhost:3003/orders/" + removeRevOrder.id, authConfig())
       .then((res) => {
-        // showMessage(res.data.msg);
+        showMessage(res.data.msg);
         setLastUpdate(Date.now()); // irasymas, update;
       })
       .catch((error) => {
-        // showMessage({ text: error.message, type: "danger" });
+        showMessage({ text: error.message, type: "danger" });
       });
   }, [removeRevOrder]);
 
@@ -90,11 +93,11 @@ function Back() {
     axios
       .delete("http://localhost:3003/admin/photos/" + deletePhoto.id, authConfig())
       .then((res) => {
-        // showMessage(res.data.msg);
+        showMessage(res.data.msg);
         setLastUpdate(Date.now()); // irasymas, update;
       })
       .catch((error) => {
-        // showMessage({ text: error.message, type: "danger" });
+        showMessage({ text: error.message, type: "danger" });
       });
   }, [deletePhoto]);
 
@@ -104,11 +107,11 @@ function Back() {
     axios
       .put("http://localhost:3003/admin/clothes/" + editClothes.id, editClothes, authConfig())
       .then((res) => {
-        // showMessage(res.data.msg);
+        showMessage(res.data.msg);
         setLastUpdate(Date.now()); // irasymas, update;
       })
       .catch((error) => {
-        // showMessage({ text: error.message, type: "info" });
+        showMessage({ text: error.message, type: "info" });
       });
   }, [editClothes]);
 
@@ -118,13 +121,18 @@ function Back() {
     axios
       .put("http://localhost:3003/orders/" + editRevOrder.id, editRevOrder, authConfig())
       .then((res) => {
-        // showMessage(res.data.msg);
+        showMessage(res.data.msg);
         setLastUpdate(Date.now()); // irasymas, update;
       })
       .catch((error) => {
-        // showMessage({ text: error.message, type: "info" });
+        showMessage({ text: error.message, type: "info" });
       });
   }, [editRevOrder]);
+
+  const showMessage = (msg) => {
+    setMessage(msg); // set'inam msg, kad pasirodytų;
+    setTimeout(() => setMessage(null), 5000); // vienkartinis intervalas, žinutė dingsta už 5s;
+  };
 
   return (
     <BackContext.Provider value={{
@@ -139,7 +147,8 @@ function Back() {
         setRemoveRevOrder,
         acceptRevOrder,
         setAcceptRevOrder,
-        setEditRevOrder
+        setEditRevOrder,
+        message
     }}>
       <Nav />
         <div className="container">
@@ -154,6 +163,7 @@ function Back() {
             </div>
         </div>
         <Edit />
+        <Message />
     </BackContext.Provider>
   );
 }

@@ -131,7 +131,7 @@ app.post("/admin/clothes", (req, res) => {
     req.body.photo
   ], (err, result) => {
       if (err) throw err;
-      res.send({ result });
+      res.send({ result, msg: { text: "Your clothing has been created!", type: "success" } });
   });
 });
 
@@ -155,7 +155,7 @@ app.delete("/admin/clothes/:id", (req, res) => {
   `;
   con.query(sql, [req.params.id], (err, result) => {
       if (err) throw err;
-      res.send({ result });
+      res.send({ result, msg: { text: "Your clothing has been deleted!", type: "danger" } });
   });
 });
 
@@ -168,7 +168,7 @@ app.delete("/admin/photos/:id", (req, res) => {
   `;
   con.query(sql, [req.params.id], (err, result) => {
       if (err) throw err;
-      res.send({ result });
+      res.send({ result, msg: { text: "Your photo has been deleted!", type: "danger" } });
   });
 });
 
@@ -181,7 +181,7 @@ app.put("/admin/clothes/:id", (req, res) => {
   `;
   con.query(sql, [req.body.color, req.body.type, req.body.price, req.body.photo, req.params.id], (err, result) => {
       if (err) throw err;
-      res.send({ result });
+      res.send({ result, msg: { text: "Your clothing has been edited!", type: "info" } });
   });
 });
 
@@ -207,7 +207,7 @@ app.post("/orders", (req, res) => {
   con.query(sql, [req.body.size, req.body.price, req.body.type, req.body.color, req.body.clothesId, req.body.usersId, req.body.verify ? 0 : 1], (err, result) => {
       if (err) throw err;
 
-      res.send({ result });
+      res.send({ result, msg: { text: "Your order has been created!", type: "success" } });
   });
 });
 
@@ -269,7 +269,7 @@ app.delete("/orders/:id", (req, res) => {
   `;
   con.query(sql, [req.params.id], (err, result) => {
       if (err) throw err;
-      res.send({ result });
+      res.send({ result, msg: { text: "Your order has been deleted!", type: "danger" } });
   });
 });
 
@@ -282,7 +282,7 @@ app.put("/orders/:id", (req, res) => {
   `;
   con.query(sql, [req.body.verify ? 1 : 0, req.params.id], (err, result) => {
       if (err) throw err;
-      res.send({ result });
+      res.send({ result, msg: { text: "Your order has been edited!", type: "info" } });
   });
 });
 

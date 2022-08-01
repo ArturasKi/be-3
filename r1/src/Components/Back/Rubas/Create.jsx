@@ -7,11 +7,12 @@ function Create() {
 
   const fileInput = useRef();
 
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState("#c2c2c2");
   const [type, setType] = useState("");
   const [price, setPrice] = useState("");
   const [photoPrint, setPhotoPrint] = useState(null);
 
+  console.log(color)
   const handleCreate = () => {
     const data = { 
         color: color,

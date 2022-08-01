@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import FrontContext from "./FrontContext";
-// import { useState, useContext } from "react";
 
 function Order({order}) {
 

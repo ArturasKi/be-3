@@ -4,7 +4,9 @@ import Order from "./Order.jsx";
 
 function Cart({clothes}) {
 
-  const { modalCart, setModalCart, order, users, confOrder, setCreateConfOrder } = useContext(FrontContext);
+  const { modalCart, setModalCart, order, users, setCreateConfOrder } = useContext(FrontContext);
+
+  
 
   useEffect(() => {
     if (null === modalCart) {
@@ -13,7 +15,10 @@ function Cart({clothes}) {
 }, [modalCart, clothes]);
 
   const handleProcceed = () => {
-    setModalCart(null);
+    const data = { 
+      
+   };
+   setCreateConfOrder(data);
   }
 
   if (modalCart === null) {

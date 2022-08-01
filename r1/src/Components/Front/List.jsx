@@ -7,13 +7,10 @@ function List() {
 
     const { clothes, setModalCart, order, users } = useContext(FrontContext);
 
-    // console.log(order.users_id);
-    // console.log(users.id);
-
     return (
         <div className="card mt-4">
             <div className="card-header">
-                <h2>List of clothes</h2>
+                <h3>List of clothes</h3>
                 <button type="button" className="btn btn-outline-success nav-link-cart mt-3 mr-4" onClick={() => setModalCart(clothes)}>
                     <i className="bi bi-bag">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bag" viewBox="0 0 16 16">
@@ -22,7 +19,7 @@ function List() {
                     </i>
                     <div className="order-amount">
                     {
-                        order ? order.filter(o => o.users_id === users.id).length : null
+                        order && users ? order.filter(o => o.users_id === users.id).length : null
                     }
                     </div>
                 </button>

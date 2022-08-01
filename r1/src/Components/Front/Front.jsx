@@ -5,6 +5,7 @@ import { authConfig } from "../../Functions/auth";
 import axios from "axios";
 import List from './List';
 import Cart from './Cart';
+import Message from './Message';
 
 function Front() {
 
@@ -17,6 +18,8 @@ function Front() {
   // const [editOrder, setEditOrder] = useState(null);
   const [modalCart, setModalCart] = useState(null);
   const [deleteOrder, setDeleteOrder] = useState(null);
+
+  const [message, setMessage] = useState(null);
 
   const [confOrder, setConfOrder] = useState(null);
   const [createConfOrder, setCreateConfOrder] = useState(null);
@@ -56,13 +59,18 @@ function Front() {
     axios
       .post("http://localhost:3003/orders", addOrder, authConfig())
       .then((res) => {
-        // showMessage(res.data.msg);
+        showMessage(res.data.msg);
         setLastUpdate(Date.now()); // irasymas, update;
       })
       .catch((error) => {
-        // showMessage({ text: error.message, type: "success" });
+        showMessage({ text: error.message, type: "success" });
       });
   }, [addOrder]);
+
+  const showMessage = (msg) => {
+    setMessage(msg); // set'inam msg, kad pasirodytų;
+    setTimeout(() => setMessage(null), 5000); // vienkartinis intervalas, žinutė dingsta už 5s;
+  };
 
   // CREATE CONFIRMED ORDER
   useEffect(() => {
@@ -98,11 +106,11 @@ function Front() {
     axios
       .delete("http://localhost:3003/orders/" + deleteOrder.id, authConfig())
       .then((res) => {
-        // showMessage(res.data.msg);
+        showMessage(res.data.msg);
         setLastUpdate(Date.now()); // irasymas, update;
       })
       .catch((error) => {
-        // showMessage({ text: error.message, type: "danger" });
+        showMessage({ text: error.message, type: "danger" });
       });
   }, [deleteOrder]);
 
@@ -116,6 +124,7 @@ function Front() {
       modalCart,
       setModalCart,
       setDeleteOrder,
+      message,
       confOrder,
       setCreateConfOrder
     }}>
@@ -128,6 +137,7 @@ function Front() {
             </div>
         </div>
         <Cart />
+        <Message />
     </FrontContext.Provider>
   );
 }
