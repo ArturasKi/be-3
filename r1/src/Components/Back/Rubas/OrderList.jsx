@@ -42,7 +42,7 @@ function OrderList() {
                 {
                   revOrder ? revOrder.map(o => 
                   <li className="list-group" key={o.id}>
-                    <p className="mt-2">Order Id: <b>{o.id}</b> userId: <b>{o.users_id} </b> Verify: <b>{o.verify}</b></p>
+                    <p className="mt-2">Order Id: <b>{o.id}</b> userId: <b>{o.users_id} </b> Approved: <b>{o.verify ? 'Yes' : 'No'}</b></p>
                     <button type="button" className="btn btn-outline-success mt-2" onClick={() => handleOrderYes(o)}>Accept</button>
                     <button type="button" className="btn btn-outline-danger mt-2" onClick={() => handleOrderNo(o)}>Remove</button>
                   </li>) : null

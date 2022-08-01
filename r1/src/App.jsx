@@ -66,7 +66,7 @@ function LoginPage() {
           <div className='card-body'>
             <div className='form-group'>name: <input type="text" value={user} onChange={e => setUser(e.target.value)}></input></div>
             <div className='form-group'>password: <input type="password" value={pass} onChange={e => setPass(e.target.value)}></input></div>
-            <button onClick={doLogin}>Login</button>
+            <button className="btn btn-outline-primary" onClick={doLogin}>Login</button>
           </div>
         </div>
       </div>

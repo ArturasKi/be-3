@@ -21,9 +21,6 @@ function Front() {
 
   const [message, setMessage] = useState(null);
 
-  const [confOrder, setConfOrder] = useState(null);
-  const [createConfOrder, setCreateConfOrder] = useState(null);
-
   // READ CLOTHES
   useEffect(() => {
     axios
@@ -46,13 +43,6 @@ function Front() {
       .then((res) => setUsers(res.data.find(el => el.id === JSON.parse(localStorage.getItem('user'))[0].id)));
   }, []);
 
-  // READ CONFIRMED ORDERS
-  useEffect(() => {
-    axios
-      .get("http://localhost:3003/confirmed-orders", authConfig())
-      .then((res) => setConfOrder(res.data));
-  }, []);
-
   // CREATE ORDER
   useEffect(() => {
     if (null === addOrder) return;
@@ -71,34 +61,6 @@ function Front() {
     setMessage(msg); // set'inam msg, kad pasirodytų;
     setTimeout(() => setMessage(null), 5000); // vienkartinis intervalas, žinutė dingsta už 5s;
   };
-
-  // CREATE CONFIRMED ORDER
-  useEffect(() => {
-    if (null === createConfOrder) return;
-    axios
-      .post("http://localhost:3003/confirmed-orders", createConfOrder, authConfig())
-      .then((res) => {
-        // showMessage(res.data.msg);
-        setLastUpdate(Date.now()); // irasymas, update;
-      })
-      .catch((error) => {
-        // showMessage({ text: error.message, type: "success" });
-      });
-  }, [createConfOrder]);
-
-  // // EDIT ORDER
-  // useEffect(() => {
-  //   if (null === editOrder) return;
-  //   axios
-  //     .put("http://localhost:3003/orders/" + editOrder.id, editOrder, authConfig())
-  //     .then((res) => {
-  //       // showMessage(res.data.msg);
-  //       setLastUpdate(Date.now()); // irasymas, update;
-  //     })
-  //     .catch((error) => {
-  //       // showMessage({ text: error.message, type: "info" });
-  //     });
-  // }, [editOrder]);
 
   // DELETE ORDER
   useEffect(() => {
@@ -124,9 +86,7 @@ function Front() {
       modalCart,
       setModalCart,
       setDeleteOrder,
-      message,
-      confOrder,
-      setCreateConfOrder
+      message
     }}>
       <Nav />
         <div className="container">

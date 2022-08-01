@@ -48,7 +48,6 @@ function Create() {
             type="color"
             className="form-control"
             value={color}
-            id="colorPicker"
             onChange={(e) => setColor(e.target.value)}
           ></input>
           Hex Code: {color}

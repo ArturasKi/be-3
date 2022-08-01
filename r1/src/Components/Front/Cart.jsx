@@ -1,12 +1,11 @@
+import { useState } from "react";
 import { useContext, useEffect } from "react";
 import FrontContext from "./FrontContext.jsx";
 import Order from "./Order.jsx";
 
 function Cart({clothes}) {
 
-  const { modalCart, setModalCart, order, users, setCreateConfOrder } = useContext(FrontContext);
-
-  
+  const { modalCart, setModalCart, order, users } = useContext(FrontContext);
 
   useEffect(() => {
     if (null === modalCart) {
@@ -15,11 +14,7 @@ function Cart({clothes}) {
 }, [modalCart, clothes]);
 
   const handleProcceed = () => {
-    const data = { 
-      
    };
-   setCreateConfOrder(data);
-  }
 
   if (modalCart === null) {
     return null;

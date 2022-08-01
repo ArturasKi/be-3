@@ -235,32 +235,6 @@ FROM users
   });
 });
 
-// //FRONT READ CONFIRMED ORDERS
-// app.get("/confirmed-orders", (req, res) => {
-//   const sql = `
-// SELECT *
-// FROM confirmed_orders
-// `;
-//   con.query(sql, (err, result) => {
-//       if (err) throw err;
-//       res.send(result);
-//   });
-// });
-
-// //FRONT CREATE CONFIRMED ORDERS
-// app.post("/confirmed-orders", (req, res) => {
-//   const sql = `
-//   INSERT INTO confirmed_orders
-//   (orders_id)
-//   VALUES (?)
-//   `;
-//   con.query(sql, [req.body.orders_id], (err, result) => {
-//       if (err) throw err;
-
-//       res.send({ result });
-//   });
-// });
-
 //FRONT DELETE ORDER
 app.delete("/orders/:id", (req, res) => {
   const sql = `
